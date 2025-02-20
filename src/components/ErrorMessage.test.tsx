@@ -10,6 +10,6 @@ describe('ErrorMessage test suite', ()=>{
         render(<ErrorMessage message='An error occurred'/>)
         // screen.debug() this will print the component
         const expectedMessage = 'An error occurred'
-        expect(screen.getByTestId('message-container')).toBeInTheDocument();
+        expect(screen.getByTestId('message-container')).toHaveTextContent(expectedMessage)
     })
 })
