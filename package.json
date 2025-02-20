@@ -9,7 +9,6 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest"
-
   },
   "dependencies": {
     "react": "^19.0.0",
