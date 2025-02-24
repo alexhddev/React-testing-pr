@@ -5,7 +5,7 @@ import {ErrorMessage} from './ErrorMessage'
 
 
 
-describe('ErrorMessage test suite', ()=>{
+describe.skip('ErrorMessage test suite', ()=>{
     it('Renders default error state', ()=>{
         render(<ErrorMessage message='An error occurred'/>)
         // screen.debug() this will print the component

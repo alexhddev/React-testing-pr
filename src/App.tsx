@@ -1,10 +1,15 @@
+import { Post1 } from "./components/Post/Post1"
 
 
 
 function App() {
 
   return (
-    <>     <div>Hello</div>
+    <>     
+      <Post1
+        user="Alex"
+        content="Is is a sunny day in the neighborhood"
+      ></Post1>
     </>
   )
 }
