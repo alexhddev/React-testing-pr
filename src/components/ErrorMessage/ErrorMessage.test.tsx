@@ -1,7 +1,7 @@
 import {describe, it, expect} from 'vitest'
 import { render, screen } from '@testing-library/react'
 import {ErrorMessage} from './ErrorMessage'
-import '@testing-library/jest-dom'
+// import '@testing-library/jest-dom' // add "types": ["vitest/globals", "@testing-library/jest-dom"] to tsconfig.app.json to prevent this
 
 
 
