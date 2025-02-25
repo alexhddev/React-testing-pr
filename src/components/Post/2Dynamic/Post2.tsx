@@ -23,7 +23,7 @@ export function Post2(props: {
         </div>
         <div data-testid="comment-container">
             <input
-                data-testid = "comment-input"
+                data-testid="comment-input"
                 value={comment}
                 onChange={e => setComment(e.target.value)}
             />
@@ -35,11 +35,14 @@ export function Post2(props: {
                     setComment('')
                 }}
             >Comment</button>
-            {
-                comments.map(comment => {
-                    return <h4 key={nextId++}>{comment.content}</h4>
-                })
-            }
+            <div data-testid="post-comment-container">
+                {
+                    comments.map(comment => {
+                        return <p key={nextId++}>{comment.content}</p>
+                    })
+                }
+            </div>
+
         </div>
 
     </div>

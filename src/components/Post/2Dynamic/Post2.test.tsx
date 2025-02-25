@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react"
+import { render, screen, within } from "@testing-library/react"
 import { Post2 } from "./Post2";
 import userEvent from '@testing-library/user-event'
 
@@ -45,6 +45,52 @@ describe('Post 2 test suite', () => {
             const commentContent = 'You are awesome!'
             await user.type(commentInput, commentContent)
             expect(commentInput).toHaveValue(commentContent)
+        })
+
+        test('Comment area is cleared on click', async () => {
+            const user = userEvent.setup();
+            const commentInput = screen.getByTestId('comment-input')
+            await user.type(commentInput, 'You are awesome!')
+
+            const commentButton = screen.getByRole('button')
+            await user.click(commentButton)
+
+            expect(commentInput).toBeEmptyDOMElement();
+        })
+
+        test('Comment is added on screen', async () => {
+            const user = userEvent.setup();
+            const commentInput = screen.getByTestId('comment-input')
+            await user.type(commentInput, 'You are awesome!')
+
+            const commentButton = screen.getByRole('button')
+            await user.click(commentButton)
+            
+            const commentsContainer = screen.getByTestId('post-comment-container')
+            const comments = within(commentsContainer).getAllByRole('paragraph')
+            expect(comments.length).toBe(1)
+            expect(comments[0]).toHaveTextContent('You are awesome!')
+        })
+
+        test('Multiple comments are added on screen', async () => {
+            const comment1 = 'You are awesome!'
+            const comment2 = 'Nice car!'
+
+            const user = userEvent.setup();
+            const commentInput = screen.getByTestId('comment-input')
+            const commentButton = screen.getByRole('button')
+
+            await user.type(commentInput, comment1)
+            await user.click(commentButton)
+
+            await user.type(commentInput, comment2)
+            await user.click(commentButton)
+            
+            const commentsContainer = screen.getByTestId('post-comment-container')
+            const comments = within(commentsContainer).getAllByRole('paragraph')
+            expect(comments.length).toBe(2)
+            expect(comments[0]).toHaveTextContent(comment1)
+            expect(comments[1]).toHaveTextContent(comment2)
         })
     })
 })
