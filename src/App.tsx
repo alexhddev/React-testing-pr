@@ -1,4 +1,4 @@
-import { Post1 } from "./components/Post/Post1"
+import { Post1 } from "./components/Post/1Trivial/Post1"
 
 
 
