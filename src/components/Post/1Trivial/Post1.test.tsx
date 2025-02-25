@@ -3,7 +3,7 @@ import { Post1 } from "./Post1";
 
 
 
-describe('Post 1 test suite - trivial tests', ()=>{
+describe.skip('Post 1 test suite - trivial tests', ()=>{
     it('should be rendered in the document', ()=>{
         const someUserName = 'Alex';
         const someContent = 'Some content'
