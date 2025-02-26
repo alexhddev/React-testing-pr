@@ -1,11 +1,6 @@
 import { useState, useEffect } from "react";
 import { getCommentsForPost } from "./DataService";
-
-
-
-export type Comment = {
-    content: string
-}
+import { Comment } from "../Model";
 
 let nextId = 0;
 

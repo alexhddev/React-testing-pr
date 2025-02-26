@@ -1,4 +1,4 @@
-import { Comment } from "./Post3"
+import { Comment } from "../Model";
 
 export async function getCommentsForPost(id: string): Promise<Comment[]> {
     const comments: Comment[] = []

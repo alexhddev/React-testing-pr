@@ -1,12 +1,9 @@
 import { act, render, screen, within } from "@testing-library/react"
-import { Comment, Post3 } from "./Post3";
-import userEvent from '@testing-library/user-event'
+import { Post3 } from "./Post3";
 import * as DataService from './DataService'
+import { Comment } from "../Model";
 
-
-
-
-describe('Post 3 test suite - mocks tests', () => {
+describe('Post 3 test suite - simple mocks tests', () => {
     const someUserName = 'Alex';
     const someContent = 'Some content'
     const someId = '123'
@@ -50,7 +47,5 @@ describe('Post 3 test suite - mocks tests', () => {
         expect(comments.length).toBe(2)
         expect(comments[0]).toHaveTextContent(someComments[0].content)
         expect(comments[1]).toHaveTextContent(someComments[1].content)
-
     })
-
 })
