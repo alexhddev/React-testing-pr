@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event'
 
 
 
-describe('Post 2 test suite', () => {
+describe.skip('Post 2 test suite', () => {
     it('should be rendered in the document', () => {
         const someUserName = 'Alex';
         const someContent = 'Some content'

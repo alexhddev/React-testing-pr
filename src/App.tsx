@@ -1,5 +1,7 @@
 // import { Post1 } from "./components/Post/1Trivial/Post1"
-import { Post2 } from "./components/Post/2Dynamic/Post2"
+//import { Post2 } from "./components/Post/2Dynamic/Post2"
+
+import { Post3 } from "./components/Post/3Mocks/Post3"
 
 
 
@@ -7,10 +9,11 @@ function App() {
 
   return (
     <>     
-      <Post2
+      <Post3
         user="Alex"
         content="Is is a sunny day in the neighborhood"
-      ></Post2>
+        id="123"
+      ></Post3>
     </>
   )
 }
