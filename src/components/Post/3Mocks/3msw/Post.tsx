@@ -4,7 +4,7 @@ import { Comment } from "../Model";
 
 let nextId = 0;
 
-export function Post3(props: {
+export function Post(props: {
     content: string,
     user: string,
     id: string

@@ -1,10 +1,10 @@
 import { act, render, screen, within } from "@testing-library/react"
 import { Comment } from "../Model";
-import { Post3 } from "./Post3";
+import { Post } from "./Post";
 import { setupServer } from "msw/node";
 import { HttpResponse, http } from "msw";
 
-describe('Post 3 test suite - msw server tests', () => {
+describe('Post test suite - msw server tests', () => {
     const someUserName = 'Alex';
     const someContent = 'Some content'
     const someId = '123'
@@ -31,11 +31,11 @@ describe('Post 3 test suite - msw server tests', () => {
     it('should load received comments', async () => {
 
         await act(async () => {
-            render(<Post3
+            render(<Post
                 user={someUserName}
                 content={someContent}
                 id={someId}
-            ></Post3>)
+            ></Post>)
         })
 
         const commentsContainer = screen.getByTestId('post-comment-container')

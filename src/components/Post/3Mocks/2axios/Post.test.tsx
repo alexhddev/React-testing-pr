@@ -1,9 +1,9 @@
 import { act, render, screen, within } from "@testing-library/react"
-import { Post3 } from "./Post3";
-import * as DataService from './DataService'
 import { Comment } from "../Model";
+import axios from 'axios'
+import { Post } from "./Post";
 
-describe.skip('Post 3 test suite - simple mocks tests', () => {
+describe('Post test suite - mocking axios tests', () => {
     const someUserName = 'Alex';
     const someContent = 'Some content'
     const someId = '123'
@@ -16,30 +16,35 @@ describe.skip('Post 3 test suite - simple mocks tests', () => {
         }
     ]
     it('should call service to load comments', async () => {
-        const getCommentsForPostSpy = vi.spyOn(DataService, 'getCommentsForPost');
-
-        await act(async () => { // should show what happens without act and await
-            render(<Post3
+        const axiosGetSpy = vi.spyOn(axios, 'get')
+        axiosGetSpy.mockResolvedValueOnce({
+            data: someComments
+        })
+        await act(async () => {
+            render(<Post
                 user={someUserName}
                 content={someContent}
                 id={someId}
-            ></Post3>)
+            ></Post>)
         })
 
-        expect(getCommentsForPostSpy).toHaveBeenCalledOnce()
-        expect(getCommentsForPostSpy).toHaveBeenCalledWith(someId)
+        expect(axiosGetSpy).toHaveBeenCalledOnce();
+        // expect(axiosGetSpy).toHaveBeenCalledWith('') // won't work
+        const axiosGetSpyCall = axiosGetSpy.mock.calls[0][0]
+        expect(axiosGetSpyCall.endsWith(someId)).toBe(true);
     })
 
     it('should load received comments', async () => {
-        const getCommentsForPostSpy = vi.spyOn(DataService, 'getCommentsForPost');
-        getCommentsForPostSpy.mockResolvedValueOnce(someComments)
-
+        const axiosGetSpy = vi.spyOn(axios, 'get')
+        axiosGetSpy.mockResolvedValueOnce({
+            data: someComments
+        })
         await act(async () => {
-            render(<Post3
+            render(<Post
                 user={someUserName}
                 content={someContent}
                 id={someId}
-            ></Post3>)
+            ></Post>)
         })
 
         const commentsContainer = screen.getByTestId('post-comment-container')
