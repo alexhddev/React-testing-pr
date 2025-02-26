@@ -1,14 +1,12 @@
 import { useState } from "react";
 
-
-
 type Comment = {
     content: string
 }
 
 let nextId = 0;
 
-export function Post2(props: {
+export function Post(props: {
     content: string,
     user: string
 }) {

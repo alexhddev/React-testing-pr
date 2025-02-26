@@ -1,6 +1,6 @@
 
 
-export function Post1(props: {
+export function Post(props: {
     content: string,
     user: string
 }){

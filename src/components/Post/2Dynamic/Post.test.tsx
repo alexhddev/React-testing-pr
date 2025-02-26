@@ -1,18 +1,18 @@
 import { render, screen, within } from "@testing-library/react"
-import { Post2 } from "./Post2";
+import { Post } from "./Post";
 import userEvent from '@testing-library/user-event'
 
 
 
 
-describe.skip('Post 2 test suite', () => {
+describe('Post test suite - dynamic component', () => {
     it('should be rendered in the document', () => {
         const someUserName = 'Alex';
         const someContent = 'Some content'
-        render(<Post2
+        render(<Post
             user={someUserName}
             content={someContent}
-        ></Post2>)
+        ></Post>)
 
         const postContainer = screen.getByTestId('post-container')
         expect(postContainer).toBeInTheDocument();
@@ -33,10 +33,10 @@ describe.skip('Post 2 test suite', () => {
         const someUserName = 'Alex';
         const someContent = 'Some content'
         beforeEach(() => {
-            render(<Post2
+            render(<Post
                 user={someUserName}
                 content={someContent}
-            ></Post2>)
+            ></Post>)
         })
 
         test('User can comment', async () => {

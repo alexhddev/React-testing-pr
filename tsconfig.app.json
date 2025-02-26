@@ -23,6 +23,6 @@
     "noUncheckedSideEffectImports": true,
     "types": ["vitest/globals", "@testing-library/jest-dom"]
   },
-  "include": ["src"],
+  "include": ["src", "src/components/Post/1Trivial/Post.tsx"],
   
 }

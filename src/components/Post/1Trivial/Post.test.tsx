@@ -1,16 +1,14 @@
 import { render, screen,  } from "@testing-library/react"
-import { Post1 } from "./Post1";
+import { Post } from "./Post";
 
-
-
-describe.skip('Post 1 test suite - trivial tests', ()=>{
+describe('Post test suite - trivial tests', ()=>{
     it('should be rendered in the document', ()=>{
         const someUserName = 'Alex';
         const someContent = 'Some content'
-        render(<Post1
+        render(<Post
             user={someUserName}
             content={someContent}
-        ></Post1>)
+        ></Post>)
 
         const postContainer = screen.getByTestId('post-container')
         expect(postContainer).toBeInTheDocument();
