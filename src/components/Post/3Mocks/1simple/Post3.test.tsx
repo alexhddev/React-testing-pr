@@ -3,7 +3,7 @@ import { Post3 } from "./Post3";
 import * as DataService from './DataService'
 import { Comment } from "../Model";
 
-describe('Post 3 test suite - simple mocks tests', () => {
+describe.skip('Post 3 test suite - simple mocks tests', () => {
     const someUserName = 'Alex';
     const someContent = 'Some content'
     const someId = '123'

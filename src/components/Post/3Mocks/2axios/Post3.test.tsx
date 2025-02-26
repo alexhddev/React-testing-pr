@@ -16,12 +16,11 @@ describe('Post 3 test suite - simple mocks tests', () => {
         }
     ]
     it('should call service to load comments', async () => {
-        //const getCommentsForPostSpy = vi.spyOn(DataService, 'getCommentsForPostWithAxios');
         const axiosGetSpy = vi.spyOn(axios, 'get')
         axiosGetSpy.mockResolvedValueOnce({
             data: someComments
         })
-        await act(async () => { // should show what happens without act and await
+        await act(async () => {
             render(<Post3
                 user={someUserName}
                 content={someContent}
@@ -30,28 +29,28 @@ describe('Post 3 test suite - simple mocks tests', () => {
         })
 
         expect(axiosGetSpy).toHaveBeenCalledOnce();
-        expect(axiosGetSpy).toHaveBeenCalledWith('')
-        console.log(axiosGetSpy)
+        // expect(axiosGetSpy).toHaveBeenCalledWith('') // won't work
         const axiosGetSpyCall = axiosGetSpy.mock.calls[0][0]
         expect(axiosGetSpyCall.endsWith(someId)).toBe(true);
     })
 
-    // it('should load received comments', async () => {
-    //     const getCommentsForPostSpy = vi.spyOn(DataService, 'getCommentsForPost');
-    //     getCommentsForPostSpy.mockResolvedValueOnce(someComments)
+    it('should load received comments', async () => {
+        const axiosGetSpy = vi.spyOn(axios, 'get')
+        axiosGetSpy.mockResolvedValueOnce({
+            data: someComments
+        })
+        await act(async () => {
+            render(<Post3
+                user={someUserName}
+                content={someContent}
+                id={someId}
+            ></Post3>)
+        })
 
-    //     await act(async () => {
-    //         render(<Post3
-    //             user={someUserName}
-    //             content={someContent}
-    //             id={someId}
-    //         ></Post3>)
-    //     })
-
-    //     const commentsContainer = screen.getByTestId('post-comment-container')
-    //     const comments = within(commentsContainer).getAllByRole('paragraph')
-    //     expect(comments.length).toBe(2)
-    //     expect(comments[0]).toHaveTextContent(someComments[0].content)
-    //     expect(comments[1]).toHaveTextContent(someComments[1].content)
-    // })
+        const commentsContainer = screen.getByTestId('post-comment-container')
+        const comments = within(commentsContainer).getAllByRole('paragraph')
+        expect(comments.length).toBe(2)
+        expect(comments[0]).toHaveTextContent(someComments[0].content)
+        expect(comments[1]).toHaveTextContent(someComments[1].content)
+    })
 })
