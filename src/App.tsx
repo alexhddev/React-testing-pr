@@ -1,19 +1,17 @@
-// import { Post1 } from "./components/Post/1Trivial/Post1"
-//import { Post2 } from "./components/Post/2Dynamic/Post2"
-
-import { Post } from "./components/Post/3Mocks/1simple/Post"
-
-
+import { ShoppingList } from "./components/Post/2zDynamic/ShopingList"
 
 function App() {
 
+  function handleSelectItem(item: string){
+    console.log(item)
+  } 
+
   return (
     <>     
-      <Post
-        user="Alex"
-        content="Is is a sunny day in the neighborhood"
-        id="123"
-      ></Post>
+      <ShoppingList
+        groceries={['Eggs', 'Milk', 'Paper']}
+        selectItem={handleSelectItem}
+      />
     </>
   )
 }
