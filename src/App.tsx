@@ -1,4 +1,4 @@
-import { ShoppingList } from "./components/Post/2zDynamic/ShopingList"
+import { ShoppingList } from "./components/Post/2zDynamic/ShoppingList"
 
 function App() {
 

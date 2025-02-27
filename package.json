@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "vitest",
+    "test": "vitest src/components/Post/2zDynamic/ShoppingList.test.tsx",
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
