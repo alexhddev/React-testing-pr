@@ -33,7 +33,7 @@ describe('UseArray test suites', () => {
             act(() => {
                 renderResult.result.current.remove(0)
             })
-            expect(renderResult.result.current.array[0]).not.toContain(1)
+            expect(renderResult.result.current.array).not.toContain(1)
         })
 
         it('should filter elements of array - less than', () => {
@@ -45,6 +45,24 @@ describe('UseArray test suites', () => {
             expect(renderResult.result.current.array).toEqual([1, 2, 3, 4])
         })
 
+    })
+
+    // add as homework - do on different branch?
+    describe('UseArray with strings', ()=>{
+        it('should remove elements of array - elements that do not start with UpperCase', () => {
+            const initialArray = ['A', 'B', 'apple', 'Map']
+            const renderResult = renderHook(() => useArray(initialArray))
+            act(() => {
+                renderResult.result.current.filter(word =>{
+                    if (word[0]===word[0].toUpperCase()) {
+                        return true
+                    }
+                    return false
+                })
+            })
+            expect(renderResult.result.current.array).toHaveLength(3)
+            expect(renderResult.result.current.array).not.toContain('apple')
+        })
     })
 })
 
