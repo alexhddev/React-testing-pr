@@ -3,11 +3,16 @@ import { useState } from 'react'
 
 
 
+// Add check for duplicate items in groceries array
 export function ShoppingList(props: {
     groceries: string[]
     selectItem: Function
 }) {
-
+    // Check for duplicates in groceries array
+    const hasDuplicates = props.groceries.length !== new Set(props.groceries).size;
+    if (hasDuplicates) {
+        throw new Error('Duplicate items found in groceries array');
+    }
     const [items, setItems] = useState<{
         text: string,
         checked: boolean

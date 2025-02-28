@@ -33,4 +33,14 @@ describe('Shopping list test suite', () => {
         await user.click(milkIngredient)
         expect(selectItemMock).toHaveBeenCalledWith(ingredients[0])
     })
+
+    it('Throw error on list duplicates', ()=>{
+        const groceriesWithDuplicates = ['Onions', 'Ham', 'Ham']
+        expect(()=>{
+            render(<ShoppingList
+                groceries={groceriesWithDuplicates}
+                selectItem={someFunction}
+            />)            
+        }).toThrowError('Duplicate items found in groceries array')
+    })
 })
