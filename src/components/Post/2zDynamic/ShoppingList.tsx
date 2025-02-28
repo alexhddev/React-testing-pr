@@ -1,9 +1,5 @@
 import { useState } from 'react'
 
-
-
-
-// Add check for duplicate items in groceries array
 export function ShoppingList(props: {
     groceries: string[]
     selectItem: Function

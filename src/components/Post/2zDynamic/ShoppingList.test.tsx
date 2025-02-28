@@ -43,4 +43,14 @@ describe('Shopping list test suite', () => {
             />)            
         }).toThrowError('Duplicate items found in groceries array')
     })
+
+    it('Throw error on list duplicates - generic messages', ()=>{
+        const groceriesWithDuplicates = ['Onions', 'Ham', 'Ham']
+        expect(()=>{
+            render(<ShoppingList
+                groceries={groceriesWithDuplicates}
+                selectItem={someFunction}
+            />)            
+        }).toThrowError(/Duplicate/)
+    })
 })
