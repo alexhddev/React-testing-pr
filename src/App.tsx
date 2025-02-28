@@ -1,17 +1,10 @@
-import { ShoppingList } from "./components/Post/2zDynamic/ShoppingList"
+import UseArrayWrapper from "./components/hooks/UseArrayExample"
 
 function App() {
 
-  function handleSelectItem(item: string){
-    console.log(item)
-  } 
-
   return (
     <>     
-      <ShoppingList
-        groceries={['Eggs', 'Milk', 'Paper']}
-        selectItem={handleSelectItem}
-      />
+      <UseArrayWrapper/>
     </>
   )
 }
