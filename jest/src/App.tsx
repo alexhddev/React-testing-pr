@@ -1,8 +1,14 @@
+import { Post } from './components/Post/1Trivial/Post'
+
 function App() {
 
   return (
     <>
-      <h1>Hello</h1>
+      <Post
+        content='The sun is bright'
+        user='Alex'
+        likesBy={['Mary', 'John']}
+      />
     </>
   )
 }
