@@ -1,12 +1,16 @@
 import { render, screen, within } from "@testing-library/react"
-import { ShoppingList } from "./ShoppingList"
+import { ShoppingList2 } from "./ShoppingList2"
 import userEvent from "@testing-library/user-event"
 
 describe('Shopping list test suite', () => {
     const ingredients = ['milk', 'onions', 'ham']
     const someFunction = () => { }
+    const someFunctionWrapper = {
+        someFunction
+    }
+    const someFunctionSpy = jest.spyOn(someFunctionWrapper, "someFunction")
     it('should render ingredients', () => {
-        render(<ShoppingList
+        render(<ShoppingList2
             groceries={ingredients}
             selectItem={someFunction}
         />)
@@ -19,7 +23,7 @@ describe('Shopping list test suite', () => {
 
     it('should select ingredients', async () => {
         const selectItemMock = jest.fn()
-        render(<ShoppingList
+        render(<ShoppingList2
             groceries={ingredients}
             selectItem={selectItemMock}
         />)
@@ -34,23 +38,13 @@ describe('Shopping list test suite', () => {
         expect(selectItemMock).toHaveBeenCalledWith(ingredients[0])
     })
 
-    it('Throw error on list duplicates', ()=>{
+    it('Show error message on list duplicates', ()=>{
         const groceriesWithDuplicates = ['Onions', 'Ham', 'Ham']
-        expect(()=>{
-            render(<ShoppingList
+            render(<ShoppingList2
                 groceries={groceriesWithDuplicates}
                 selectItem={someFunction}
-            />)            
-        }).toThrow('Duplicate items found in groceries array')
-    })
-
-    it('Throw error on list duplicates - generic messages', ()=>{
-        const groceriesWithDuplicates = ['Onions', 'Ham', 'Ham']
-        expect(()=>{
-            render(<ShoppingList
-                groceries={groceriesWithDuplicates}
-                selectItem={someFunction}
-            />)            
-        }).toThrow(/Duplicate/)
+            />) 
+            const errorMessage = screen.getByRole('paragraph')  
+            expect(errorMessage).toHaveTextContent(/duplicate/)      
     })
 })
