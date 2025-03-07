@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "jest",
-    "test-file": "jest src/components/Post/1Trivial/Post.test.tsx"
+    "test-file": "jest src/components/Post/3Mocks/1simple/Post2.test.tsx"
   },
   "dependencies": {
     "axios": "^1.8.1",
