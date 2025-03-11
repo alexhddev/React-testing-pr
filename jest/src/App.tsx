@@ -1,4 +1,4 @@
-import { Post } from './components/Post/1Trivial/Post'
+import { Post } from "./components/Post/3Mocks/2axios/Post"
 
 function App() {
 
@@ -7,7 +7,7 @@ function App() {
       <Post
         content='The sun is bright'
         user='Alex'
-        likesBy={['Mary', 'John']}
+        id="123"        
       />
     </>
   )

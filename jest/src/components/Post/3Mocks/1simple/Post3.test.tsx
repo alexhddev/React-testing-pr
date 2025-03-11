@@ -1,24 +1,19 @@
 import { act, render, screen, within } from "@testing-library/react"
+import * as DataService from './DataService'
 import { Post } from "./Post"
 
+describe('Mock test', () => {
 
-
-jest.mock('./DataService', () => ({
-    getCommentsForPost:()=> {
-        console.log('Calling getCommentsForPost mock')
-        return [{
+    it('should do mock', async () => {
+        const getCommentsSpy = jest.spyOn(DataService, 'getCommentsForPost')
+        getCommentsSpy.mockResolvedValueOnce([{
             content: 'Cool1'
         },
         {
             content: 'Cool2'
-        }]
-    }
-}))
-
-describe('Mock test', () => {
-    it('should do mock', async () => {
+        }])
         await act(async () => {
-            render(<Post // wrap first without act
+            render(<Post 
                 user={'asd'}
                 content={'sdf'}
                 id={'123'}
@@ -29,7 +24,7 @@ describe('Mock test', () => {
         expect(comments.length).toBe(2)
         expect(comments[0]).toHaveTextContent('Cool1')
         expect(comments[1]).toHaveTextContent('Cool2')
+        expect(getCommentsSpy).toHaveBeenCalledTimes(1)
+        expect(getCommentsSpy).toHaveBeenCalledWith('123')
     })
-
-
 })

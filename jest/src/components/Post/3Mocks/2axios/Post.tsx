@@ -12,11 +12,17 @@ export function Post(props: {
 
     const [comment, setComment] = useState('')
     const [comments, setComments] = useState<Comment[]>([])
+    const [errorState, setErrorState] = useState('')
 
     useEffect(()=>{
         const fetchComments = async ()=>{
-            const comments = await getCommentsForPostWithAxios(props.id)
-            setComments(comments)
+            try {
+                const comments = await getCommentsForPostWithAxios(props.id)
+                setComments(comments)
+            } catch (error) {
+                console.error((error as Error).message)
+                setErrorState('Error while getting comments!')
+            }
         }
         fetchComments();
     }, [])
@@ -26,12 +32,14 @@ export function Post(props: {
             <h2>{props.user}:</h2>
             <p>{props.content}</p>
         </div>
+        <label style={{ color: 'red' }}  data-testid="error-label">{errorState}</label>
         <div data-testid="comment-container">
             <input
                 data-testid="comment-input"
                 value={comment}
                 onChange={e => setComment(e.target.value)}
             />
+            
             <button
                 onClick={() => {
                     comments.push({
@@ -40,6 +48,7 @@ export function Post(props: {
                     setComment('')
                 }}
             >Comment</button>
+            
             <div data-testid="post-comment-container">
                 {
                     comments.map(comment => {

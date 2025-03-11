@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "vitest src/components/Post/3Mocks/1simple/Post2.test.tsx",
+    "test": "vitest",
+    "test-file": "vitest src/components/Post/3Mocks/0Spies/ShoppingList2.test.tsx",
     "coverage": "vitest run --coverage"
   },
   "dependencies": {

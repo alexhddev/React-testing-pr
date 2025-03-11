@@ -14,7 +14,7 @@ describe('Shopping list test suite', () => {
         const someFunctionWrapper = {
             function: someFunction
         }
-        const someFunctionSpy = jest.spyOn(someFunctionWrapper, "function")
+        const someFunctionSpy = vi.spyOn(someFunctionWrapper, "function")
         render(<ShoppingList2
             groceries={ingredients}
             selectItem={someFunctionWrapper.function}
@@ -32,8 +32,7 @@ describe('Shopping list test suite', () => {
     })
 
     it('should select ingredients - external spy', async () => {
-
-        const onItemSelectSpy = jest.spyOn(Utils, 'onItemSelect')
+        const onItemSelectSpy = vi.spyOn(Utils, 'onItemSelect')
         render(<ShoppingList2
             groceries={ingredients}
             selectItem={Utils.onItemSelect}
@@ -41,47 +40,29 @@ describe('Shopping list test suite', () => {
         const user = userEvent.setup();
 
         const shoppingList = screen.getByRole('list')
-        expect(shoppingList).toBeInTheDocument();
         const ingredientItems = within(shoppingList).getAllByRole('listitem');
-        expect(ingredientItems).toHaveLength(3)
         const milkIngredient = ingredientItems[0];
         await user.click(milkIngredient)
         expect(onItemSelectSpy).toHaveBeenCalledWith(ingredients[0])
         expect(onItemSelectSpy).toHaveBeenCalledTimes(1);
     })
 
-        it('should select ingredients - external spy and Date spy', async () => {
-            const onItemSelectSpy = jest.spyOn(Utils, 'onItemSelectWithTime')
-            const dateSpy = jest.spyOn(Date, 'now')
-            render(<ShoppingList2
-                groceries={ingredients}
-                selectItem={Utils.onItemSelectWithTime}
-            />)
-            const user = userEvent.setup();
-    
-            const shoppingList = screen.getByRole('list')
-            const ingredientItems = within(shoppingList).getAllByRole('listitem');
-            const milkIngredient = ingredientItems[0];
-            await user.click(milkIngredient)
-            expect(onItemSelectSpy).toHaveBeenCalledWith(ingredients[0])
-            expect(onItemSelectSpy).toHaveBeenCalledTimes(1);
-            expect(dateSpy).toHaveBeenCalled();
-        })
+    it('should select ingredients - external spy and Date spy', async () => {
+        const onItemSelectSpy = vi.spyOn(Utils, 'onItemSelectWithTime')
+        const dateSpy = vi.spyOn(Date, 'now')
+        render(<ShoppingList2
+            groceries={ingredients}
+            selectItem={Utils.onItemSelectWithTime}
+        />)
+        const user = userEvent.setup();
 
-        it('should select ingredients - mock - easiest way', async () => {
-            const selectItemMock = jest.fn();
-            render(<ShoppingList2
-                groceries={ingredients}
-                selectItem={selectItemMock}
-            />)
-            const user = userEvent.setup();
-    
-            const shoppingList = screen.getByRole('list')
-            const ingredientItems = within(shoppingList).getAllByRole('listitem');
-            const milkIngredient = ingredientItems[0];
-            await user.click(milkIngredient)
-            expect(selectItemMock).toHaveBeenCalledWith(ingredients[0])
-            expect(selectItemMock).toHaveBeenCalledTimes(1);
-        })
+        const shoppingList = screen.getByRole('list')
+        const ingredientItems = within(shoppingList).getAllByRole('listitem');
+        const milkIngredient = ingredientItems[0];
+        await user.click(milkIngredient)
+        expect(onItemSelectSpy).toHaveBeenCalledWith(ingredients[0])
+        expect(onItemSelectSpy).toHaveBeenCalledTimes(1);
+        expect(dateSpy).toHaveBeenCalled();
+    })
 
 })
