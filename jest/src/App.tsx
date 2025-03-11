@@ -1,14 +1,10 @@
-import { Post } from "./components/Post/3Mocks/2axios/Post"
+import { AppWithRoutes } from "./components/Router/AppWithRoutes"
 
 function App() {
 
   return (
     <>
-      <Post
-        content='The sun is bright'
-        user='Alex'
-        id="123"        
-      />
+      <AppWithRoutes />
     </>
   )
 }
