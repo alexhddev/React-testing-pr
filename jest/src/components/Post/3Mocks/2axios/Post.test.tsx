@@ -59,4 +59,18 @@ describe('Post test suite - mocking axios tests', () => {
         // easier:
         expect(axiosGetSpyCallId).toBe('123')
     })
+
+    it('Network call throws error', async () => {
+        const axiosGetSpy = jest.spyOn(axios, 'get')
+        axiosGetSpy.mockRejectedValueOnce(new Error('Backend error'))
+        await act(async () => {
+            render(<Post
+                user={someUserName}
+                content={someContent}
+                id={someId}
+            ></Post>)
+        })
+        const errorLabel = screen.getByTestId('error-label')
+        expect(errorLabel).not.toBeEmptyDOMElement()
+    })
 })
