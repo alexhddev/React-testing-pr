@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "jest",
-    "test-file": "jest src/components/Post/3Mocks/2axios/Post.test.tsx"
+    "test-file": "jest src/components/Router/AppWithRoutes.test.tsx"
   },
   "dependencies": {
     "axios": "^1.8.1",
