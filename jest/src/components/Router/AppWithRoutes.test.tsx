@@ -1,15 +1,12 @@
-
 import { TextEncoder } from 'util';
 global.TextEncoder = TextEncoder;
-
-import { BrowserRouter, MemoryRouter } from 'react-router'
 import { render, screen } from '@testing-library/react'
 import { AppWithRoutes } from './AppWithRoutes'
+
 
 jest.mock('./Home', () => ({
     Home: () => <div data-testid='HomeMock' />
 }))
-
 
 describe('App with routes test suite', () => {
     it('Should always load the navbar', () => {
@@ -23,5 +20,4 @@ describe('App with routes test suite', () => {
         const home = screen.getByTestId('HomeMock')
         expect(home).toBeInTheDocument();
     })
-
 })
