@@ -1,10 +1,10 @@
 import { Outlet, RouteObject } from "react-router";
-import { About } from "./About";
-import { Home } from "./Home";
-import NavBar from "./Navbar";
-import { PageNotFound } from "./PageNotFound";
-import { Post } from "./Post";
-import { Posts } from "./Posts";
+import { About } from "./Routes/About";
+import { Home } from "./Routes/Home";
+import NavBar from "./Routes/Navbar";
+import { PageNotFound } from "./Routes/PageNotFound";
+import { Post } from "./Routes/Post";
+import { Posts } from "./Routes/Posts";
 
 export const routesConfig: RouteObject[] = [{
     element: (

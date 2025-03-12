@@ -5,17 +5,17 @@ import { createMemoryRouter, RouterProvider } from "react-router"
 import { routesConfig } from "./RoutesConfig"
 import { render, screen } from "@testing-library/react";
 
-vi.mock('./Home', () => ({
+vi.mock('./Routes/Home', () => ({
     Home: () => <div data-testid='HomeMock' />
 }))
-vi.mock('./About', () => ({
+vi.mock('./Routes/About', () => ({
     About: () => <div data-testid='AboutMock' />
 }))
-vi.mock('./PageNotFound', () => ({
+vi.mock('./Routes/PageNotFound', () => ({
     PageNotFound: () => <div data-testid='PageNotFoundMock' />
 }))
 
-vi.mock('./Post', () => ({
+vi.mock('./Routes/Post', () => ({
     Post: () => <div data-testid='PostMock' />
 }))
 

@@ -7,15 +7,15 @@ import userEvent from '@testing-library/user-event'
 
 
 
-vi.mock('./Home', () => ({
+vi.mock('./Routes/Home', () => ({
     Home: () => <div data-testid='HomeMock' />
 }))
 
-vi.mock('./About', () => ({
+vi.mock('./Routes/About', () => ({
     About: () => <div data-testid='AboutMock' />
 }))
 
-vi.mock('./Posts', () => ({
+vi.mock('./Routes/Posts', () => ({
     Posts: () => <div data-testid='PostsMock' />
 }))
 
