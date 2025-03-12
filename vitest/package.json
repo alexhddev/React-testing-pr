@@ -9,19 +9,21 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest",
-    "test-file": "vitest src/components/Post/3Mocks/0Spies/ShoppingList2.test.tsx",
+    "test-file": "vitest src/components/Router/RoutesConfig.test.tsx",
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
     "axios": "^1.8.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-router": "^7.3.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^22.13.10",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^4.3.4",
