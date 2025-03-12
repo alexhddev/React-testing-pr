@@ -4,6 +4,7 @@ import { Home } from './Home'
 import { About } from './About'
 import { Posts } from './Posts'
 import { Post } from './Post'
+import { PageNotFound } from './PageNotFound'
 
 export function AppWithRoutes(){
 
@@ -31,6 +32,10 @@ export function AppWithRoutes(){
                 path: '/post/:id',
                 element: <Post />
             },
+            {
+                path: '*',
+                element: <PageNotFound />
+            }
         ]
     }])
 
