@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Post snapshot tests Second test 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="post-container"
+  >
+    <h2>
+      Some Other user:
+    </h2>
+    <p>
+      Some Other Content
+    </p>
+    <p>
+      New Footer
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Post snapshot tests initial test 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="post-container"
+  >
+    <h2>
+      Some user:
+    </h2>
+    <p>
+      Some Content
+    </p>
+    <p>
+      New Footer
+    </p>
+  </div>
+</DocumentFragment>
+`;

@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest",
-    "test-file": "vitest src/components/Router/RoutesConfig.test.tsx",
+    "test-file": "vitest src/components/Snapshot/Post.test.tsx",
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
